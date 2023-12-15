@@ -52,3 +52,12 @@ public:
     RandomPlayer(char symbol, int dimension);
     void get_move(int& x, int& y);
 };
+class GameManager {
+private:
+    Board* boardPtr;
+    Player* players[2];
+
+public:
+    GameManager(Board* bPtr, Player* playerPtr[2]);
+    void run();
+};
