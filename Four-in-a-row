@@ -123,5 +123,102 @@ bool ConnectFour_Board::is_winner() {
 
     return false;
 }
+bool ConnectFour_Board::is_draw() {
+    return (n_moves == n_rows * n_cols && !is_winner());
+}
+
+bool ConnectFour_Board::game_is_over() {
+    return is_winner() || (n_moves == n_rows * n_cols);
+}
+
+
+Player::Player(char symbol) {
+    this->symbol = symbol;
+}
+
+void Player::get_move(int& x, int& y) {
+    cout << "\nPlease enter your move (row and column, separated by space): ";
+    cin >> x >> y;
+}
+
+string Player::to_string() {
+    return "Player";
+}
+
+char Player::get_symbol() {
+    return symbol;
+}
+
+
+ConnectFour_Player::ConnectFour_Player(char symbol) : Player(symbol) {}
+
+void ConnectFour_Player::get_move(int& x, int& y) {
+    Player::get_move(x, y); // Use the base class implementation
+}
+
+
+ConnectFour_RandomPlayer::ConnectFour_RandomPlayer(char symbol) : Player(symbol) {}
+
+void ConnectFour_RandomPlayer::get_move(int& x, int& y) {
+
+    x = 0;
+    y = (int)(rand() / (RAND_MAX + 1.0) * 7);
+}
+
+
+GameManager::GameManager(Board* bPtr, Player* playerPtr[2]) {
+    boardPtr = bPtr;
+    players[0] = playerPtr[0];
+    players[1] = playerPtr[1];
+}
+
+void GameManager::run() {
+    int x, y;
+
+    boardPtr->display_board();
+
+    while (!boardPtr->game_is_over()) {
+        for (int i : {0, 1}) {
+            players[i]->get_move(x, y);
+            while (!boardPtr->update_board(x, y, players[i]->get_symbol())) {
+                cout << "Invalid move. Try again.\n";
+                players[i]->get_move(x, y);
+            }
+            boardPtr->display_board();
+            if (boardPtr->is_winner()) {
+                cout << players[i]->to_string() << " wins!\n";
+                return;
+            }
+            if (boardPtr->is_draw()) {
+                cout << "It's a draw!\n";
+                return;
+            }
+        }
+    }
+}
+
+int main() {
+    srand(static_cast<unsigned>(time(nullptr)));
+
+    int choice;
+    Player* players[2];
+
+    players[0] = new ConnectFour_Player('X');
+
+    cout << "Welcome to Connect Four Game. :)\n";
+    cout << "Press 1 if you want to play with the computer: ";
+    cin >> choice;
+
+    if (choice != 1)
+        players[1] = new ConnectFour_Player('O');
+    else
+        players[1] = new ConnectFour_RandomPlayer('O');
+
+    GameManager connect_four_game(new ConnectFour_Board(), players);
+    connect_four_game.run();
+
+    return 0;
+}
+
 
 
