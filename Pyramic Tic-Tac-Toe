@@ -61,3 +61,12 @@ public:
     GameManager(Board* bPtr, Player* playerPtr[2]);
     void run();
 };
+X_O_Board::X_O_Board() {
+    n_rows = n_cols = 5;  // Updated to 5
+    board = new char*[n_rows];
+    for (int i = 0; i < n_rows; i++) {
+        board[i] = new char[n_cols];
+        for (int j = 0; j < n_cols; j++)
+            board[i][j] = 0;
+    }
+}
