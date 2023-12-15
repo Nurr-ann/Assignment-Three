@@ -138,6 +138,7 @@ if (RXC_X == 3) {
         if (board[i][i] == 'X') {
             RXC1_X++;
             RXC1_O = 0;
+
         } else if (board[i][i] == 'O') {
             RXC1_O++;
             RXC1_X = 0;
