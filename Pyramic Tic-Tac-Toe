@@ -15,3 +15,6 @@ public:
     virtual void display_board() = 0;
     virtual bool game_is_over() = 0;
 };
+class X_O_Board : public Board {
+private:
+    int playerCounts[2] = {0, 0}; // Counts of consecutive X's or O's for each player
