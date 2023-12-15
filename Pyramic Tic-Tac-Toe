@@ -18,3 +18,12 @@ public:
 class X_O_Board : public Board {
 private:
     int playerCounts[2] = {0, 0}; // Counts of consecutive X's or O's for each player
+public:
+    X_O_Board();
+    ~X_O_Board();  // Destructor to free memory
+    bool update_board(int x, int y, char mark);
+    void display_board();
+    bool is_winner();
+    bool is_draw();
+    bool game_is_over();
+};
