@@ -164,6 +164,18 @@ if (board[i][4 - i] == 'X') {
         if (RXC2_X == 3) {
             playerCounts[0]++;
         } else if (RXC2_O == 3) {
+return (playerCounts[0] > playerCounts[1] || playerCounts[0] < playerCounts[1]) && n_moves == 24;
+}
+
+
+bool X_O_Board::is_draw() {
+    return (n_moves == 25 && !is_winner());
+}
+
+
+bool X_O_Board::game_is_over() {
+    return n_moves >= 25;
+}
             playerCounts[1]++;
         }
     }
