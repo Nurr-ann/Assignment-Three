@@ -151,3 +151,19 @@ if (RXC_X == 3) {
         }
             RXC1_O++;
             RXC1_X = 0;
+if (board[i][4 - i] == 'X') {
+            RXC2_X++;
+            RXC2_O = 0;
+        } else if (board[i][4 - i] == 'O') {
+            RXC2_O++;
+            RXC2_X = 0;
+        } else {
+            RXC2_X = RXC2_O = 0;
+        }
+
+        if (RXC2_X == 3) {
+            playerCounts[0]++;
+        } else if (RXC2_O == 3) {
+            playerCounts[1]++;
+        }
+    }
