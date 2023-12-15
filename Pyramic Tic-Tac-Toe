@@ -33,3 +33,7 @@ X_O_Board::~X_O_Board() {
     }
     delete[] board;
 }
+class Player {
+protected:
+    string name;
+    char symbol;
