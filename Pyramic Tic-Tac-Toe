@@ -236,3 +236,22 @@ void GameManager::run() {
             while (!boardPtr->update_board(x, y, players[i]->get_symbol())) {
                 players[i]->get_move(x, y);
             }
+boardPtr->display_board();
+
+            if (boardPtr->is_winner()) {
+                cout << players[i]->to_string() << " wins\n";
+                return;
+            }
+        }
+    }
+
+
+    cout << "Draw!\n";
+}
+
+int main() {
+    int choice;
+    Player* players[2];
+    players[0] = new Player(1, 'x');
+
+    cout << "Welcome to FCAI X-O Game. :)\n";
