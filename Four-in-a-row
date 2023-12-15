@@ -35,3 +35,8 @@ public:
     string to_string();
     char get_symbol();
 };
+class ConnectFour_Player : public Player {
+public:
+    ConnectFour_Player(char symbol);
+    void get_move(int& x, int& y) override;
+};
