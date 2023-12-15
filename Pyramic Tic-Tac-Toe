@@ -108,3 +108,27 @@ for (int i = 0; i < 5; i++) {
             } else {
                 RXC_X = RXC_O = 0;
             }
+if (RXC_X == 3) {
+                playerCounts[0]++;
+            } else if (RXC_O == 3) {
+                playerCounts[1]++;
+            }
+
+            // Check columns
+            if (board[j][i] == 'X') {
+                LCX++;
+                LCO = 0;
+            } else if (board[j][i] == 'O') {
+                LCO++;
+                LCX = 0;
+            } else {
+                LCX = LCO = 0;
+            }
+
+            if (LCX == 3) {
+                playerCounts[0]++;
+            } else if (LCO == 3) {
+                playerCounts[1]++;
+            }
+        }
+    }
