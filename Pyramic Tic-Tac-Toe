@@ -3,3 +3,8 @@
 #include <iomanip>
 #include <string>
 using namespace std;
+class Board {
+protected:
+    int n_rows, n_cols;
+    char** board;
+    int n_moves = 0;
