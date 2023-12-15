@@ -27,3 +27,9 @@ public:
     bool is_draw();
     bool game_is_over();
 };
+X_O_Board::~X_O_Board() {
+    for (int i = 0; i < n_rows; i++) {
+        delete[] board[i];
+    }
+    delete[] board;
+}
