@@ -140,5 +140,14 @@ if (RXC_X == 3) {
             RXC1_O = 0;
 
         } else if (board[i][i] == 'O') {
+} else {
+            RXC1_X = RXC1_O = 0;
+        }
+
+        if (RXC1_X == 3) {
+            playerCounts[0]++;
+        } else if (RXC1_O == 3) {
+            playerCounts[1]++;
+        }
             RXC1_O++;
             RXC1_X = 0;
