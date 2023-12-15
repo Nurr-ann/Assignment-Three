@@ -70,3 +70,12 @@ X_O_Board::X_O_Board() {
             board[i][j] = 0;
     }
 }
+bool X_O_Board::update_board(int x, int y, char mark) {
+
+    if (!(x < 0 || x >= n_rows || y < 0 || y >= n_cols) && (board[x][y] == 0)) {
+        board[x][y] = toupper(mark);
+        n_moves++;
+        return true;
+    } else
+        return false;
+}
