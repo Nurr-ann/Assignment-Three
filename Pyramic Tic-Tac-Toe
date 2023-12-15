@@ -200,6 +200,11 @@ string Player::to_string() {
     return "Player: " + name;
 }
 
+RandomPlayer::RandomPlayer(char symbol, int dimension) : Player(symbol) {
+    this->dimension = dimension;
+    this->name = "Random Computer Player";
+    cout << "My names is " << name << endl;
+}
 
 char Player::get_symbol() {
     return symbol;
