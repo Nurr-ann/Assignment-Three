@@ -15,3 +15,12 @@ public:
     virtual bool is_draw() = 0;
     virtual bool game_is_over() = 0;
 };
+class ConnectFour_Board : public Board {
+public:
+    ConnectFour_Board();
+    bool update_board(int x, int y, char symbol) override;
+    void display_board() override;
+    bool is_winner() override;
+    bool is_draw() override;
+    bool game_is_over() override;
+};
