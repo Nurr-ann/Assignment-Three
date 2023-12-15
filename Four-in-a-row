@@ -2,4 +2,9 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
-
+using namespace std;
+class Board {
+protected:
+    int n_rows, n_cols;
+    char** board;
+    int n_moves = 0;
