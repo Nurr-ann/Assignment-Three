@@ -179,3 +179,14 @@ bool X_O_Board::game_is_over() {
             playerCounts[1]++;
         }
     }
+Player::Player(char symbol) {
+    this->symbol = symbol;
+}
+
+
+Player::Player(int order, char symbol) {
+    cout << "Welcome player " << order << endl;
+    cout << "Please enter your name: ";
+    cin >> name;
+    this->symbol = symbol;
+}
