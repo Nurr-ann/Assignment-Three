@@ -190,3 +190,17 @@ Player::Player(int order, char symbol) {
     cin >> name;
     this->symbol = symbol;
 }
+void Player::get_move(int& x, int& y) {
+    cout << "\nPlease enter your move (0 to 4) separated by a space: ";
+    cin >> x >> y;
+}
+
+
+string Player::to_string() {
+    return "Player: " + name;
+}
+
+
+char Player::get_symbol() {
+    return symbol;
+}
