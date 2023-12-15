@@ -89,3 +89,9 @@ void X_O_Board::display_board() {
     }
     cout << endl;
 }
+bool X_O_Board::is_winner() {
+    if (n_moves < 24) {
+        return false;
+    }
+
+    char winner = 0;
