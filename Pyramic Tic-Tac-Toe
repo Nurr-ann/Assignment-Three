@@ -209,3 +209,14 @@ RandomPlayer::RandomPlayer(char symbol, int dimension) : Player(symbol) {
 char Player::get_symbol() {
     return symbol;
 }
+void RandomPlayer::get_move(int& x, int& y) {
+    x = (int)(rand() / (RAND_MAX + 1.0) * dimension);
+    y = (int)(rand() / (RAND_MAX + 1.0) * dimension);
+}
+
+
+GameManager::GameManager(Board* bPtr, Player* playerPtr[2]) {
+    boardPtr = bPtr;
+    players[0] = playerPtr[0];
+    players[1] = playerPtr[1];
+}
