@@ -132,3 +132,12 @@ if (RXC_X == 3) {
             }
         }
     }
+ int RXC1_X = 0, RXC1_O = 0, RXC2_X = 0, RXC2_O = 0;
+    for (int i = 0; i < 5; i++) {
+        // Check diagonal 1
+        if (board[i][i] == 'X') {
+            RXC1_X++;
+            RXC1_O = 0;
+        } else if (board[i][i] == 'O') {
+            RXC1_O++;
+            RXC1_X = 0;
