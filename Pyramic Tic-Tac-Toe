@@ -30,9 +30,9 @@ public:
 ///////////////////////////////////////////
 // This class represents a 3 x 3 board
 // used in X_O game
-class X_O_Board:public Board {
+class Pyramic_Tic_Tac_Toe:public Board {
 public:
-    X_O_Board ();
+    Pyramic_Tic_Tac_Toe ();
     bool update_board (int x, int y, char mark);
     void display_board();
     bool is_winner();
@@ -100,7 +100,7 @@ public:
 
 
 // Set the board
-X_O_Board::X_O_Board () {
+Pyramic_Tic_Tac_Toe::Pyramic_Tic_Tac_Toe() {
     n_rows =3;
     n_cols = 5;
     board = new char*[n_rows];
@@ -114,10 +114,10 @@ X_O_Board::X_O_Board () {
 // Return true  if move is valid and put it on board
 // within board boundaries in empty cell
 // Return false otherwise
-bool X_O_Board::update_board (int x, int y, char mark){
+bool Pyramic_Tic_Tac_Toe::update_board (int x, int y, char mark){
     // Only update if move is valid
     if((x==0&&y==2)||(x==1&&(y==1||y==2||y==3))||(x==2&&(y==0||y==1||y==2||y==3||y==4)))
-     {
+    {
         board[x][y] = toupper(mark);
         n_moves++;
         return true;
@@ -127,7 +127,7 @@ bool X_O_Board::update_board (int x, int y, char mark){
 }
 
 // Display the board and the pieces on it
-void X_O_Board::display_board() {
+void Pyramic_Tic_Tac_Toe::display_board() {
 
     for (int i: {0,1,2}) {
         if(i==0){
@@ -153,7 +153,7 @@ void X_O_Board::display_board() {
 
 
 
-        }
+            }
             cout << "\n--------------------------------";
             cout<<endl;
         }
@@ -161,25 +161,25 @@ void X_O_Board::display_board() {
             cout << "\n| ";
             for (int j: {0,1,2,3,4}) {
 
-                    cout << "(" << i << "," << j << ")";
-                    cout << setw(2) << board [i][j] << "|";
+                cout << "(" << i << "," << j << ")";
+                cout << setw(2) << board [i][j] << "|";
 
 
-        }
+            }
             cout << "\n--------------------------------------";
             cout<<endl;
 
 
 
-    }
+        }
 
-}
+    }
 }
 
 // Returns true if there is any winner
 // either X or O
 // Written in a complex way. DO NOT DO LIKE THIS.
-bool X_O_Board::is_winner() {
+bool Pyramic_Tic_Tac_Toe::is_winner() {
     char row_win[3], col_win[5], diag_win[2];
     for (int i:{0,1,2}) {
         if(i==1){
@@ -243,11 +243,11 @@ bool X_O_Board::is_winner() {
 }
 
 // Return true if 9 moves are done and no winner
-bool X_O_Board::is_draw() {
+bool Pyramic_Tic_Tac_Toe::is_draw() {
     return (n_moves == 9 && !is_winner());
 }
 
-bool X_O_Board::game_is_over () {
+bool Pyramic_Tic_Tac_Toe::game_is_over () {
     return n_moves >= 9;
 }GameManager::GameManager(Board* bPtr, Player* playerPtr[2] ) {
     boardPtr = bPtr;
@@ -335,7 +335,7 @@ int main(){
         //Player pointer points to child
         players[1] = new RandomPlayer ('o', 3);
 
-    GameManager x_o_game (new X_O_Board(), players);
-    x_o_game.run();
+    GameManager Pyramic_Tic_Tac_Toe_game (new Pyramic_Tic_Tac_Toe(), players);
+    Pyramic_Tic_Tac_Toe_game.run();
     system ("pause");
 }
