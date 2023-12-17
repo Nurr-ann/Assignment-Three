@@ -191,3 +191,33 @@ void ConnectFour_Board::display_board() {
     }
     cout << endl;
 }
+bool ConnectFour_Board::is_winner() {
+
+    for (int row = 0; row < n_rows; row++) {
+        for (int col = 0; col < n_cols; col++) {
+            char symbol = board[row][col];
+            if (symbol != 0) {
+                if (row + 3 < n_rows && symbol == board[row + 1][col] &&
+                    symbol == board[row + 2][col] && symbol == board[row + 3][col])
+                    return true;
+
+                if (col + 3 < n_cols && symbol == board[row][col + 1] &&
+                    symbol == board[row][col + 2] && symbol == board[row][col + 3])
+                    return true;
+
+                if (row + 3 < n_rows && col + 3 < n_cols &&
+                    symbol == board[row + 1][col + 1] && symbol == board[row + 2][col + 2] &&
+                    symbol == board[row + 3][col + 3])
+                    return true;
+
+                if (row - 3 >= 0 && col + 3 < n_cols &&
+                    symbol == board[row - 1][col + 1] && symbol == board[row - 2][col + 2] &&
+                    symbol == board[row - 3][col + 3])
+                    return true;
+            }
+        }
+    }
+
+    return false;
+}
+
