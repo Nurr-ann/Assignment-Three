@@ -87,4 +87,44 @@ public:
     ConnectFour_RandomPlayer(char symbol);
     void get_move(int& x, int& y) override;
 };
+class GameManager {
+private:
+    Board* boardPtr;
+    Player* players[2];
 
+public:
+    GameManager(Board* bPtr, Player* playerPtr[2]);
+    void run();
+};
+
+X_O_Board::X_O_Board() {
+    n_rows = n_cols = 3;
+    board = new char*[n_rows];
+    for (int i = 0; i < n_rows; i++) {
+        board[i] = new char[n_cols];
+        for (int j = 0; j < n_cols; j++)
+            board[i][j] = 0;
+    }
+}
+
+bool X_O_Board::update_board(int x, int y, char mark) {
+    if (!(x < 0 || x > 2 || y < 0 || y > 2) && (board[x][y] == 0)) {
+        board[x][y] = toupper(mark);
+        n_moves++;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void X_O_Board::display_board() {
+    for (int i : {0, 1, 2}) {
+        cout << "\n| ";
+        for (int j : {0, 1, 2}) {
+            cout << "(" << i << "," << j << ")";
+            cout << setw(2) << board[i][j] << " |";
+        }
+        cout << "\n-----------------------------";
+    }
+    cout << endl;
+}
