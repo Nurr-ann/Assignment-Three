@@ -1,1 +1,48 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+using namespace std;
+
+class Board;
+class X_O_Board;
+class ConnectFour_Board;
+class Player;
+class RandomPlayer;
+class ConnectFour_Player;
+class ConnectFour_RandomPlayer;
+class GameManager;
+
+class Board {
+protected:
+    int n_rows, n_cols;
+    char** board;
+    int n_moves = 0;
+
+public:
+    virtual ~Board() {
+        for (int i = 0; i < n_rows; ++i) {
+            delete[] board[i];
+        }
+        delete[] board;
+    }
+
+    virtual bool update_board(int x, int y, char symbol) = 0;
+    virtual bool is_winner() = 0;
+    virtual bool is_draw() = 0;
+    virtual void display_board() = 0;
+    virtual bool game_is_over() = 0;
+};
+
+class X_O_Board : public Board {
+public:
+    X_O_Board();
+    bool update_board(int x, int y, char mark);
+    void display_board();
+    bool is_winner();
+    bool is_draw();
+    bool game_is_over();
+};
 
