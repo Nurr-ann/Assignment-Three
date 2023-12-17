@@ -45,4 +45,25 @@ public:
     bool is_draw();
     bool game_is_over();
 };
+class ConnectFour_Board : public Board {
+public:
+    ConnectFour_Board();
+    bool update_board(int x, int y, char symbol) override;
+    void display_board() override;
+    bool is_winner() override;
+    bool is_draw() override;
+    bool game_is_over() override;
+};
 
+class Player {
+protected:
+    string name;
+    char symbol;
+
+public:
+    Player(char symbol);
+    Player(int order, char symbol);
+    virtual void get_move(int& x, int& y);
+    string to_string();
+    char get_symbol();
+};
