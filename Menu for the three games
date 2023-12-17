@@ -147,3 +147,22 @@ bool X_O_Board::is_winner() {
         return true;
     return false;
 }
+bool X_O_Board::is_draw() {
+    return (n_moves == 9 && !is_winner());
+}
+
+bool X_O_Board::game_is_over() {
+    return n_moves >= 9;
+}
+
+ConnectFour_Board::ConnectFour_Board() {
+    n_rows = 6;
+    n_cols = 7;
+    board = new char*[n_rows];
+    for (int i = 0; i < n_rows; i++) {
+        board[i] = new char[n_cols];
+        for (int j = 0; j < n_cols; j++)
+            board[i][j] = 0;
+    }
+}
+
